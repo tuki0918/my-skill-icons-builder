@@ -2,6 +2,7 @@ import React from 'react';
 import { Copy, AlignLeft, AlignCenter, Settings, Moon, Sun } from 'lucide-react';
 
 import { AVAILABLE_ICONS } from './SkillIconsData';
+import githubIcon from '../assets/github.svg';
 
 
 const SkillIconsBuilder: React.FC = () => {
@@ -82,7 +83,7 @@ const SkillIconsBuilder: React.FC = () => {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 p-6">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center mt-12 mb-16">
+        <div className="text-center mt-12 mb-16">          
           <h1 className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 mb-4">
             Skill Icons Builder
           </h1>
@@ -345,6 +346,23 @@ const SkillIconsBuilder: React.FC = () => {
               skill-icons
             </a>
           </p>
+        </div>
+
+
+        {/* GitHub Icon */}
+        <div className="flex justify-center items-center mt-6">
+          <a
+            href="https://github.com/tuki0918/my-skill-icons-builder"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center w-12 h-12 bg-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 group"
+          >
+            <img
+              src={githubIcon}
+              alt="GitHub"
+              className="w-6 h-6 group-hover:scale-110 transition-transform duration-300"
+            />
+          </a>
         </div>
       </div>
     </div>
