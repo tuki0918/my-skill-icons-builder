@@ -1,5 +1,5 @@
 import React from 'react';
-import { Copy } from 'lucide-react';
+import { Copy, AlignLeft, AlignCenter } from 'lucide-react';
 
 import { AVAILABLE_ICONS } from './SkillIconsData';
 
@@ -10,7 +10,7 @@ const SkillIconsBuilder: React.FC = () => {
   const [copiedText, setCopiedText] = React.useState<string>('');
   const [theme, setTheme] = React.useState<'dark' | 'light'>('dark');
   const [perLine, setPerLine] = React.useState<number>(15);
-  const [centerAlign, setCenterAlign] = React.useState<boolean>(false);
+  const [alignment, setAlignment] = React.useState<'left' | 'center'>('left');
 
 
   const toggleIcon = (icon: string) => {
@@ -47,7 +47,7 @@ const SkillIconsBuilder: React.FC = () => {
     const themeParam = theme !== 'dark' ? `&theme=${theme}` : '';
     const perLineParam = perLine !== 15 ? `&perline=${perLine}` : '';
     const url = `https://skillicons.dev/icons?i=${iconsParam}${themeParam}${perLineParam}`;
-    if (centerAlign) {
+    if (alignment === 'center') {
       return `<p align="center">\n  <a href=\"https://skillicons.dev\">\n    <img src=\"${url}\" />\n  </a>\n</p>`;
     }
     return `[![My Skills](${url})](https://skillicons.dev)`;
@@ -58,7 +58,7 @@ const SkillIconsBuilder: React.FC = () => {
     const themeParam = theme !== 'dark' ? `&theme=${theme}` : '';
     const perLineParam = perLine !== 15 ? `&perline=${perLine}` : '';
     const url = `https://skillicons.dev/icons?i=${iconsParam}${themeParam}${perLineParam}`;
-    if (centerAlign) {
+    if (alignment === 'center') {
       return `<p align="center">\n  <a href=\"https://skillicons.dev\">\n    <img src=\"${url}\" />\n  </a>\n</p>`;
     }
     return `<a href=\"https://skillicons.dev\">\n  <img src=\"${url}\" />\n</a>`;
@@ -151,21 +151,35 @@ const SkillIconsBuilder: React.FC = () => {
                       <span className="w-8 text-sm font-medium text-gray-600">{perLine}</span>
                     </div>
                   </div>
-                  {/* Center Alignment */}
+                  {/* Alignment */}
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Alignment
                     </label>
-                    <button
-                      onClick={() => setCenterAlign(!centerAlign)}
-                      className={`w-full px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                        centerAlign
-                          ? 'bg-blue-500 text-white shadow-md'
-                          : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                      }`}
-                    >
-                      {centerAlign ? '📍 Centered' : '👈 Left Aligned'}
-                    </button>
+                    <div className="flex gap-2">
+                      <button
+                        onClick={() => setAlignment('left')}
+                        className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                          alignment === 'left'
+                            ? 'bg-blue-500 text-white shadow-md'
+                            : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                        }`}
+                      >
+                        <AlignLeft size={16} />
+                        Left
+                      </button>
+                      <button
+                        onClick={() => setAlignment('center')}
+                        className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                          alignment === 'center'
+                            ? 'bg-blue-500 text-white shadow-md'
+                            : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                        }`}
+                      >
+                        <AlignCenter size={16} />
+                        Center
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -173,7 +187,7 @@ const SkillIconsBuilder: React.FC = () => {
               {/* Preview Display */}
               {selectedIcons.length > 0 ? (
                 <div className={`bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl p-6 mb-6 ${
-                  centerAlign ? 'text-center' : ''
+                  alignment === 'center' ? 'text-center' : ''
                 }`}>
                   <div className="min-h-[60px] flex items-center justify-center">
                     <img
@@ -200,7 +214,7 @@ const SkillIconsBuilder: React.FC = () => {
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
                       <h3 className="font-semibold text-gray-700">
-                        {centerAlign ? 'Markdown/HTML (Centered)' : 'Markdown Code'}
+                        {alignment === 'center' ? 'Markdown/HTML (Centered)' : 'Markdown Code'}
                       </h3>
                       <button
                         onClick={() => copyToClipboard(generateMarkdown(), 'markdown')}
@@ -214,10 +228,10 @@ const SkillIconsBuilder: React.FC = () => {
                       value={generateMarkdown()}
                       readOnly
                       className="w-full p-4 border border-gray-200 rounded-xl bg-gray-50 font-mono text-sm resize-none"
-                      rows={centerAlign ? 5 : 3}
+                      rows={alignment === 'center' ? 5 : 3}
                     />
                   </div>
-                  {!centerAlign && (
+                  {alignment === 'left' && (
                     <div className="space-y-3">
                       <div className="flex items-center justify-between">
                         <h3 className="font-semibold text-gray-700">HTML Code</h3>
