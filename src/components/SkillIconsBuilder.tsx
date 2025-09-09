@@ -190,9 +190,11 @@ const SkillIconsBuilder: React.FC = () => {
               {/* Preview Display */}
               {selectedIcons.length > 0 ? (
                 <div className={`bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl p-6 mb-6 ${
-                  alignment === 'center' ? 'text-center' : ''
+                  alignment === 'center' ? 'text-center' : 'text-left'
                 }`}>
-                  <div className="min-h-[60px] flex items-center justify-center">
+                  <div className={`min-h-[60px] flex items-center ${
+                    alignment === 'center' ? 'justify-center' : 'justify-start'
+                  }`}>
                     <img
                       src={getPreviewUrl()}
                       alt="Skill Icons Preview"
