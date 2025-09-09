@@ -120,17 +120,20 @@ const SkillIconsBuilder: React.FC = () => {
                 Preview
               </h2>
               {/* Settings Panel */}
-              <div className="mb-8 p-6 bg-gradient-to-r from-gray-50 to-blue-50 rounded-xl border border-gray-200">
-                <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
-                  <Settings size={18} />
-                  Settings
-                </h3>
-                <div className="grid gap-4">
-                  {/* Theme Selection */}
-                  <fieldset>
-                    <legend className="block text-sm font-medium text-gray-700 mb-2">
-                      Theme
-                    </legend>
+              <div className="mb-8 bg-gray-50 rounded-xl border border-gray-200 overflow-hidden">
+                <div className="bg-gray-100 px-4 py-4 border-b border-gray-200">
+                  <h3 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
+                    <Settings size={18} />
+                    Settings
+                  </h3>
+                </div>
+                <div className="p-6">
+                  <div className="grid gap-4">
+                    {/* Theme Selection */}
+                    <fieldset>
+                      <legend className="block text-sm font-medium text-gray-700 mb-2">
+                        Theme
+                      </legend>
                     <div className="flex gap-2">
                       <button
                         type="button"
@@ -213,6 +216,8 @@ const SkillIconsBuilder: React.FC = () => {
                       </button>
                     </div>
                   </fieldset>
+                  </div>
+                </div>
                 </div>
               </div>
 
@@ -358,7 +363,7 @@ const SkillIconsBuilder: React.FC = () => {
                   />
                   <input
                     type="text"
-                    placeholder="Search for skills (e.g., javascript, react, python...)"
+                    placeholder="Search for skills (e.g., html, js, css, react...)"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-700 placeholder-gray-400"
