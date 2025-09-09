@@ -1,5 +1,5 @@
 import React from 'react';
-import { Copy, AlignLeft, AlignCenter } from 'lucide-react';
+import { Copy, AlignLeft, AlignCenter, Settings, Moon, Sun } from 'lucide-react';
 
 import { AVAILABLE_ICONS } from './SkillIconsData';
 
@@ -103,7 +103,8 @@ const SkillIconsBuilder: React.FC = () => {
               {/* Settings Panel */}
               <div className="mb-8 p-6 bg-gradient-to-r from-gray-50 to-blue-50 rounded-xl border border-gray-200">
                 <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
-                  ⚙️ Settings
+                  <Settings size={18} />
+                  Settings
                 </h3>
                 <div className="grid gap-4">
                   {/* Theme Selection */}
@@ -114,23 +115,25 @@ const SkillIconsBuilder: React.FC = () => {
                     <div className="flex gap-2">
                       <button
                         onClick={() => setTheme('dark')}
-                        className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                        className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                           theme === 'dark'
                             ? 'bg-gray-800 text-white shadow-md'
                             : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
                         }`}
                       >
-                        🌙 Dark
+                        <Moon size={16} />
+                        Dark
                       </button>
                       <button
                         onClick={() => setTheme('light')}
-                        className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                        className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                           theme === 'light'
                             ? 'bg-yellow-400 text-gray-800 shadow-md'
                             : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
                         }`}
                       >
-                        ☀️ Light
+                        <Sun size={16} />
+                        Light
                       </button>
                     </div>
                   </div>
