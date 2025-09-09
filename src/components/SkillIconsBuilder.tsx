@@ -99,33 +99,6 @@ const SkillIconsBuilder: React.FC = () => {
                 <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
                 Preview ({selectedIcons.length} selected)
               </h2>
-              {/* Drag and Drop Icons */}
-              <div className="mb-6">
-                <div className="flex flex-wrap gap-2 p-4 bg-white rounded-xl border-2 border-dashed border-gray-200">
-                  {selectedIcons.map((icon, index) => (
-                    <div
-                      key={`${icon}-${index}`}
-                      className="group relative cursor-move transform transition-all duration-200 hover:scale-110"
-                      draggable
-                      onDragStart={(e) => handleDragStart(e, index)}
-                      onDragOver={handleDragOver}
-                      onDrop={(e) => handleDrop(e, index)}
-                    >
-                      <img
-                        src={`https://skillicons.dev/icons?i=${icon}`}
-                        alt={icon}
-                        className="w-12 h-12 rounded-lg shadow-md group-hover:shadow-lg transition-shadow"
-                      />
-                      <button
-                        onClick={() => toggleIcon(icon)}
-                        className="absolute -top-2 -right-2 w-5 h-5 bg-red-500 text-white rounded-full flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-600"
-                      >
-                        ×
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              </div>
               {/* Settings Panel */}
               <div className="mb-8 p-6 bg-gradient-to-r from-gray-50 to-blue-50 rounded-xl border border-gray-200">
                 <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
@@ -262,6 +235,30 @@ const SkillIconsBuilder: React.FC = () => {
         {/* Icon Selection Grid */}
         <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
           <h2 className="text-2xl font-bold text-gray-800 mb-6">Available Skills</h2>
+            <div className="mb-6 flex flex-wrap gap-2 p-4 bg-gray-50 rounded-xl border-2 border-dashed border-gray-200">
+              {selectedIcons.map((icon, index) => (
+                <div
+                  key={`${icon}-${index}`}
+                  className="group relative cursor-move transform transition-all duration-200 hover:scale-110"
+                  draggable
+                  onDragStart={(e) => handleDragStart(e, index)}
+                  onDragOver={handleDragOver}
+                  onDrop={(e) => handleDrop(e, index)}
+                >
+                  <img
+                    src={`https://skillicons.dev/icons?i=${icon}`}
+                    alt={icon}
+                    className="w-12 h-12 rounded-lg shadow-md group-hover:shadow-lg transition-shadow"
+                  />
+                  <button
+                    onClick={() => toggleIcon(icon)}
+                    className="absolute -top-2 -right-2 w-5 h-5 bg-red-500 text-white rounded-full flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-600"
+                  >
+                    ×
+                  </button>
+                </div>
+              ))}
+            </div>
           <div className="grid grid-cols-6 sm:grid-cols-8 md:grid-cols-10 lg:grid-cols-12 xl:grid-cols-16 gap-4">
             {AVAILABLE_ICONS.map((icon: string) => {
               const isSelected = selectedIcons.includes(icon);
@@ -290,17 +287,7 @@ const SkillIconsBuilder: React.FC = () => {
             })}
           </div>
         </div>
-        {selectedIcons.length === 0 && (
-          <div className="text-center mt-12 p-8">
-            <div className="text-6xl mb-4">🎯</div>
-            <h3 className="text-xl font-semibold text-gray-600 mb-2">
-              Choose your skills to get started!
-            </h3>
-            <p className="text-gray-500">
-              Click on any icon above to add it to your collection
-            </p>
-          </div>
-        )}
+
         {/* Footer */}
         <div className="text-center mt-12 p-6 bg-white rounded-xl shadow-sm border border-gray-100">
           <p className="text-gray-500 text-sm">
