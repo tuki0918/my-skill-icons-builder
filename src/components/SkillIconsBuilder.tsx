@@ -134,90 +134,89 @@ const SkillIconsBuilder: React.FC = () => {
                       <legend className="block text-sm font-medium text-gray-700 mb-2">
                         Theme
                       </legend>
-                    <div className="flex gap-2">
-                      <button
-                        type="button"
-                        onClick={() => setTheme("dark")}
-                        className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                          theme === "dark"
-                            ? "bg-blue-500 text-white shadow-md"
-                            : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-                        }`}
+                      <div className="flex gap-2">
+                        <button
+                          type="button"
+                          onClick={() => setTheme("dark")}
+                          className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                            theme === "dark"
+                              ? "bg-blue-500 text-white shadow-md"
+                              : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                          }`}
+                        >
+                          <Moon size={16} />
+                          Dark
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => setTheme("light")}
+                          className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                            theme === "light"
+                              ? "bg-blue-500 text-white shadow-md"
+                              : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                          }`}
+                        >
+                          <Sun size={16} />
+                          Light
+                        </button>
+                      </div>
+                    </fieldset>
+                    {/* Icons Per Line */}
+                    <div>
+                      <label
+                        htmlFor={perLineId}
+                        className="block text-sm font-medium text-gray-700 mb-2"
                       >
-                        <Moon size={16} />
-                        Dark
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => setTheme("light")}
-                        className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                          theme === "light"
-                            ? "bg-blue-500 text-white shadow-md"
-                            : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-                        }`}
-                      >
-                        <Sun size={16} />
-                        Light
-                      </button>
+                        Icons Per Line
+                      </label>
+                      <div className="flex items-center gap-2">
+                        <input
+                          id={perLineId}
+                          type="range"
+                          min="1"
+                          max="20"
+                          value={perLine}
+                          onChange={(e) => setPerLine(Number(e.target.value))}
+                          className="flex-1 accent-blue-500"
+                        />
+                        <span className="w-8 text-sm font-medium text-gray-600">
+                          {perLine}
+                        </span>
+                      </div>
                     </div>
-                  </fieldset>
-                  {/* Icons Per Line */}
-                  <div>
-                    <label
-                      htmlFor={perLineId}
-                      className="block text-sm font-medium text-gray-700 mb-2"
-                    >
-                      Icons Per Line
-                    </label>
-                    <div className="flex items-center gap-2">
-                      <input
-                        id={perLineId}
-                        type="range"
-                        min="1"
-                        max="20"
-                        value={perLine}
-                        onChange={(e) => setPerLine(Number(e.target.value))}
-                        className="flex-1 accent-blue-500"
-                      />
-                      <span className="w-8 text-sm font-medium text-gray-600">
-                        {perLine}
-                      </span>
-                    </div>
+                    {/* Alignment */}
+                    <fieldset>
+                      <legend className="block text-sm font-medium text-gray-700 mb-2">
+                        Alignment
+                      </legend>
+                      <div className="flex gap-2">
+                        <button
+                          type="button"
+                          onClick={() => setAlignment("left")}
+                          className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                            alignment === "left"
+                              ? "bg-blue-500 text-white shadow-md"
+                              : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                          }`}
+                        >
+                          <AlignLeft size={16} />
+                          Left
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => setAlignment("center")}
+                          className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                            alignment === "center"
+                              ? "bg-blue-500 text-white shadow-md"
+                              : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                          }`}
+                        >
+                          <AlignCenter size={16} />
+                          Center
+                        </button>
+                      </div>
+                    </fieldset>
                   </div>
-                  {/* Alignment */}
-                  <fieldset>
-                    <legend className="block text-sm font-medium text-gray-700 mb-2">
-                      Alignment
-                    </legend>
-                    <div className="flex gap-2">
-                      <button
-                        type="button"
-                        onClick={() => setAlignment("left")}
-                        className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                          alignment === "left"
-                            ? "bg-blue-500 text-white shadow-md"
-                            : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-                        }`}
-                      >
-                        <AlignLeft size={16} />
-                        Left
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => setAlignment("center")}
-                        className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                          alignment === "center"
-                            ? "bg-blue-500 text-white shadow-md"
-                            : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-                        }`}
-                      >
-                        <AlignCenter size={16} />
-                        Center
-                      </button>
-                    </div>
-                  </fieldset>
-                  </div>
-                </div>
                 </div>
               </div>
 
