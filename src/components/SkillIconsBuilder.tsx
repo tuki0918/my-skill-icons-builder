@@ -84,10 +84,10 @@ const SkillIconsBuilder: React.FC = () => {
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 mb-4">
-            My Skill Icons Builder
+            Skill Icons Builder
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Create beautiful skill badges for your GitHub profile! Select your technologies and get ready-to-use markdown and HTML code.
+            Create beautiful skill badges for your GitHub profile! Select your technologies and get ready-to-use Markdown and HTML code.
           </p>
         </div>
 
@@ -188,7 +188,7 @@ const SkillIconsBuilder: React.FC = () => {
                   <div className="min-h-[60px] flex items-center justify-center text-gray-400 text-sm">
                     <div className="text-center">
                       <div className="text-2xl mb-2">🎨</div>
-                      <div>Preview will appear here</div>
+                      <div>Your skill icons preview will appear here</div>
                     </div>
                   </div>
                 </div>
@@ -200,7 +200,7 @@ const SkillIconsBuilder: React.FC = () => {
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
                       <h3 className="font-semibold text-gray-700">
-                        {centerAlign ? 'Markdown/HTML (Centered)' : 'Markdown'}
+                        {centerAlign ? 'Markdown/HTML (Centered)' : 'Markdown Code'}
                       </h3>
                       <button
                         onClick={() => copyToClipboard(generateMarkdown(), 'markdown')}
@@ -220,7 +220,7 @@ const SkillIconsBuilder: React.FC = () => {
                   {!centerAlign && (
                     <div className="space-y-3">
                       <div className="flex items-center justify-between">
-                        <h3 className="font-semibold text-gray-700">HTML</h3>
+                        <h3 className="font-semibold text-gray-700">HTML Code</h3>
                         <button
                           onClick={() => copyToClipboard(generateHTML(), 'html')}
                           className="flex items-center gap-2 px-3 py-1.5 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors text-sm"
@@ -245,12 +245,12 @@ const SkillIconsBuilder: React.FC = () => {
           {/* Icon Selection Grid */}
           <div className="lg:order-2 lg:col-span-3">
             <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
-              <h2 className="text-2xl font-bold text-gray-800 mb-6">My Skills ({selectedIcons.length} selected)</h2>
+              <h2 className="text-2xl font-bold text-gray-800 mb-6">Choose Your Skills ({selectedIcons.length} selected)</h2>
               <div className="mb-6 p-4 bg-gray-50 rounded-xl border-2 border-dashed border-gray-200 min-h-[64px] flex flex-wrap gap-2 items-start">
                 {selectedIcons.length === 0 ? (
                   <div className="w-full flex items-center justify-center text-gray-400 text-sm py-4">
                     <div className="text-center">
-                      <div>Select skill icons to get started</div>
+                      <div>Click skill icons below to get started</div>
                     </div>
                   </div>
                 ) : (
