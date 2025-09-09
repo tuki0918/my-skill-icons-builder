@@ -215,46 +215,46 @@ const SkillIconsBuilder: React.FC = () => {
               {/* Code Generation */}
               {selectedIcons.length > 0 && (
                 <div className="space-y-6">
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between">
-                      <h3 className="font-semibold text-gray-700">
-                        {alignment === 'center' ? 'Markdown/HTML (Centered)' : 'Markdown Code'}
-                      </h3>
-                      <button
-                        onClick={() => copyToClipboard(generateMarkdown(), 'markdown')}
-                        className="flex items-center gap-2 px-3 py-1.5 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors text-sm"
-                      >
-                        <Copy size={14} />
-                        {copiedText === 'markdown' ? 'Copied!' : 'Copy'}
-                      </button>
-                    </div>
-                    <textarea
-                      value={generateMarkdown()}
-                      readOnly
-                      className="w-full p-4 border border-gray-200 rounded-xl bg-gray-50 font-mono text-sm resize-none"
-                      rows={alignment === 'center' ? 5 : 3}
-                    />
-                  </div>
                   {alignment === 'left' && (
                     <div className="space-y-3">
                       <div className="flex items-center justify-between">
-                        <h3 className="font-semibold text-gray-700">HTML Code</h3>
+                        <h3 className="font-semibold text-gray-700">
+                          Markdown
+                        </h3>
                         <button
-                          onClick={() => copyToClipboard(generateHTML(), 'html')}
-                          className="flex items-center gap-2 px-3 py-1.5 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors text-sm"
+                          onClick={() => copyToClipboard(generateMarkdown(), 'markdown')}
+                          className="flex items-center gap-2 px-3 py-1.5 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors text-sm"
                         >
                           <Copy size={14} />
-                          {copiedText === 'html' ? 'Copied!' : 'Copy'}
+                          {copiedText === 'markdown' ? 'Copied!' : 'Copy'}
                         </button>
                       </div>
                       <textarea
-                        value={generateHTML()}
+                        value={generateMarkdown()}
                         readOnly
                         className="w-full p-4 border border-gray-200 rounded-xl bg-gray-50 font-mono text-sm resize-none"
                         rows={3}
                       />
                     </div>
                   )}
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <h3 className="font-semibold text-gray-700">HTML</h3>
+                      <button
+                        onClick={() => copyToClipboard(generateHTML(), 'html')}
+                        className="flex items-center gap-2 px-3 py-1.5 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors text-sm"
+                      >
+                        <Copy size={14} />
+                        {copiedText === 'html' ? 'Copied!' : 'Copy'}
+                      </button>
+                    </div>
+                    <textarea
+                      value={generateHTML()}
+                      readOnly
+                      className="w-full p-4 border border-gray-200 rounded-xl bg-gray-50 font-mono text-sm resize-none"
+                      rows={6}
+                    />
+                  </div>
                 </div>
               )}
             </div>
