@@ -92,9 +92,9 @@ const SkillIconsBuilder: React.FC = () => {
         </div>
 
         {/* Main Content - 2 Column Layout */}
-        <div className="grid lg:grid-cols-2 gap-8 mb-12">
+        <div className="grid lg:grid-cols-5 gap-8 mb-12">
           {/* Preview Section - Always Visible */}
-          <div className="lg:order-1">
+          <div className="lg:order-1 lg:col-span-2">
             <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100 sticky top-6">
               <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
                 <div className={`w-3 h-3 ${selectedIcons.length > 0 ? 'bg-green-400 animate-pulse' : 'bg-gray-300'} rounded-full`}></div>
@@ -243,7 +243,7 @@ const SkillIconsBuilder: React.FC = () => {
           </div>
 
           {/* Icon Selection Grid */}
-          <div className="lg:order-2">
+          <div className="lg:order-2 lg:col-span-3">
             <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
               <h2 className="text-2xl font-bold text-gray-800 mb-6">My Skills ({selectedIcons.length} selected)</h2>
               <div className="mb-6 p-4 bg-gray-50 rounded-xl border-2 border-dashed border-gray-200 min-h-[64px] flex flex-wrap gap-2 items-start">
