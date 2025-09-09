@@ -91,12 +91,13 @@ const SkillIconsBuilder: React.FC = () => {
           </p>
         </div>
 
-        {/* Preview Section */}
-        {selectedIcons.length > 0 && (
-          <div className="mb-12">
-            <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+        {/* Main Content - 2 Column Layout */}
+        <div className="grid lg:grid-cols-2 gap-8 mb-12">
+          {/* Preview Section - Always Visible */}
+          <div className="lg:order-1">
+            <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100 sticky top-6">
               <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
-                <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                <div className={`w-3 h-3 ${selectedIcons.length > 0 ? 'bg-green-400 animate-pulse' : 'bg-gray-300'} rounded-full`}></div>
                 Preview ({selectedIcons.length} selected)
               </h2>
               {/* Settings Panel */}
@@ -104,7 +105,7 @@ const SkillIconsBuilder: React.FC = () => {
                 <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
                   ⚙️ Settings
                 </h3>
-                <div className="grid md:grid-cols-3 gap-6">
+                <div className="grid gap-4">
                   {/* Theme Selection */}
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -168,131 +169,143 @@ const SkillIconsBuilder: React.FC = () => {
                   </div>
                 </div>
               </div>
-              <div className={`bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl p-6 mb-6 ${
-                centerAlign ? 'text-center' : ''
-              }`}>
-                <div className="min-h-[60px] flex items-center justify-center">
-                  <img
-                    src={getPreviewUrl()}
-                    alt="Skill Icons Preview"
-                    className="max-w-full h-auto"
-                  />
-                </div>
-              </div>
-              {/* Code Generation */}
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between">
-                    <h3 className="font-semibold text-gray-700">
-                      {centerAlign ? 'Markdown/HTML (Centered)' : 'Markdown'}
-                    </h3>
-                    <button
-                      onClick={() => copyToClipboard(generateMarkdown(), 'markdown')}
-                      className="flex items-center gap-2 px-3 py-1.5 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors text-sm"
-                    >
-                      <Copy size={14} />
-                      {copiedText === 'markdown' ? 'Copied!' : 'Copy'}
-                    </button>
-                  </div>
-                  <textarea
-                    value={generateMarkdown()}
-                    readOnly
-                    className="w-full p-4 border border-gray-200 rounded-xl bg-gray-50 font-mono text-sm resize-none"
-                    rows={centerAlign ? 5 : 3}
-                  />
-                </div>
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between">
-                    <h3 className="font-semibold text-gray-700">
-                      {centerAlign ? 'Same as Markdown' : 'HTML'}
-                    </h3>
-                    <button
-                      onClick={() => copyToClipboard(generateHTML(), 'html')}
-                      className={`flex items-center gap-2 px-3 py-1.5 rounded-lg transition-colors text-sm ${
-                        centerAlign 
-                          ? 'bg-gray-400 text-gray-200 cursor-not-allowed' 
-                          : 'bg-purple-500 text-white hover:bg-purple-600'
-                      }`}
-                      disabled={centerAlign}
-                    >
-                      <Copy size={14} />
-                      {copiedText === 'html' ? 'Copied!' : centerAlign ? 'Same as left' : 'Copy'}
-                    </button>
-                  </div>
-                  <textarea
-                    value={centerAlign ? generateMarkdown() : generateHTML()}
-                    readOnly
-                    className={`w-full p-4 border border-gray-200 rounded-xl font-mono text-sm resize-none ${
-                      centerAlign ? 'bg-gray-100 text-gray-500' : 'bg-gray-50'
-                    }`}
-                    rows={centerAlign ? 5 : 3}
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-        {/* Icon Selection Grid */}
-        <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
-          <h2 className="text-2xl font-bold text-gray-800 mb-6">My Skills</h2>
-            <div className="mb-6 p-4 bg-gray-50 rounded-xl border-2 border-dashed border-gray-200 min-h-[64px] flex flex-wrap gap-2 items-start">
-              {selectedIcons.length === 0 ? (
-                <div className="w-full flex items-center justify-center text-gray-400 text-sm py-4">
-                  <div className="text-center">
-                    <div>Select skill icons to get started</div>
+              
+              {/* Preview Display */}
+              {selectedIcons.length > 0 ? (
+                <div className={`bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl p-6 mb-6 ${
+                  centerAlign ? 'text-center' : ''
+                }`}>
+                  <div className="min-h-[60px] flex items-center justify-center">
+                    <img
+                      src={getPreviewUrl()}
+                      alt="Skill Icons Preview"
+                      className="max-w-full h-auto"
+                    />
                   </div>
                 </div>
               ) : (
-                selectedIcons.map((icon, index) => (
-                  <div
-                    key={`${icon}-${index}`}
-                    className="group relative cursor-move transform transition-all duration-200 hover:scale-110"
-                    draggable
-                    onDragStart={(e) => handleDragStart(e, index)}
-                    onDragOver={handleDragOver}
-                    onDrop={(e) => handleDrop(e, index)}
-                  >
-                    <img
-                      src={`https://skillicons.dev/icons?i=${icon}`}
-                      alt={icon}
-                      className="w-12 h-12 rounded-lg shadow-md group-hover:shadow-lg transition-shadow"
-                    />
-                    <button
-                      onClick={() => toggleIcon(icon)}
-                      className="absolute -top-2 -right-2 w-5 h-5 bg-red-500 text-white rounded-full flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-600"
-                    >
-                      ×
-                    </button>
+                <div className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl p-6 mb-6 border-2 border-dashed border-gray-200">
+                  <div className="min-h-[60px] flex items-center justify-center text-gray-400 text-sm">
+                    <div className="text-center">
+                      <div className="text-2xl mb-2">🎨</div>
+                      <div>Preview will appear here</div>
+                    </div>
                   </div>
-                ))
+                </div>
+              )}
+
+              {/* Code Generation */}
+              {selectedIcons.length > 0 && (
+                <div className="space-y-6">
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <h3 className="font-semibold text-gray-700">
+                        {centerAlign ? 'Markdown/HTML (Centered)' : 'Markdown'}
+                      </h3>
+                      <button
+                        onClick={() => copyToClipboard(generateMarkdown(), 'markdown')}
+                        className="flex items-center gap-2 px-3 py-1.5 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors text-sm"
+                      >
+                        <Copy size={14} />
+                        {copiedText === 'markdown' ? 'Copied!' : 'Copy'}
+                      </button>
+                    </div>
+                    <textarea
+                      value={generateMarkdown()}
+                      readOnly
+                      className="w-full p-4 border border-gray-200 rounded-xl bg-gray-50 font-mono text-sm resize-none"
+                      rows={centerAlign ? 5 : 3}
+                    />
+                  </div>
+                  {!centerAlign && (
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between">
+                        <h3 className="font-semibold text-gray-700">HTML</h3>
+                        <button
+                          onClick={() => copyToClipboard(generateHTML(), 'html')}
+                          className="flex items-center gap-2 px-3 py-1.5 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors text-sm"
+                        >
+                          <Copy size={14} />
+                          {copiedText === 'html' ? 'Copied!' : 'Copy'}
+                        </button>
+                      </div>
+                      <textarea
+                        value={generateHTML()}
+                        readOnly
+                        className="w-full p-4 border border-gray-200 rounded-xl bg-gray-50 font-mono text-sm resize-none"
+                        rows={3}
+                      />
+                    </div>
+                  )}
+                </div>
               )}
             </div>
-          <div className="grid grid-cols-6 sm:grid-cols-8 md:grid-cols-10 lg:grid-cols-12 xl:grid-cols-16 gap-4">
-            {AVAILABLE_ICONS.map((icon: string) => {
-              const isSelected = selectedIcons.includes(icon);
-              return (
-                <button
-                  key={icon}
-                  onClick={() => toggleIcon(icon)}
-                  className={`p-3 rounded-xl border-2 transition-all duration-300 transform hover:scale-105 ${
-                    isSelected
-                      ? 'border-green-400 bg-green-50 shadow-lg'
-                      : 'border-gray-200 hover:border-gray-300 hover:shadow-md'
-                  }`}
-                >
-                  <img
-                    src={`https://skillicons.dev/icons?i=${icon}`}
-                    alt={icon}
-                    className={`w-full h-auto rounded-lg transition-opacity duration-200 ${
-                      isSelected ? 'opacity-70' : 'opacity-100 hover:opacity-80'
-                    }`}
-                  />
-                  <div className="mt-2 text-xs font-medium text-gray-600 hover:text-gray-800 transition-colors">
-                    {icon}
+          </div>
+
+          {/* Icon Selection Grid */}
+          <div className="lg:order-2">
+            <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+              <h2 className="text-2xl font-bold text-gray-800 mb-6">Available Skills</h2>
+              <div className="mb-6 p-4 bg-gray-50 rounded-xl border-2 border-dashed border-gray-200 min-h-[64px] flex flex-wrap gap-2 items-start">
+                {selectedIcons.length === 0 ? (
+                  <div className="w-full flex items-center justify-center text-gray-400 text-sm py-4">
+                    <div className="text-center">
+                      <div>Select skill icons to get started</div>
+                    </div>
                   </div>
-                </button>
-              );
-            })}
+                ) : (
+                  selectedIcons.map((icon, index) => (
+                    <div
+                      key={`${icon}-${index}`}
+                      className="group relative cursor-move transform transition-all duration-200 hover:scale-110"
+                      draggable
+                      onDragStart={(e) => handleDragStart(e, index)}
+                      onDragOver={handleDragOver}
+                      onDrop={(e) => handleDrop(e, index)}
+                    >
+                      <img
+                        src={`https://skillicons.dev/icons?i=${icon}`}
+                        alt={icon}
+                        className="w-12 h-12 rounded-lg shadow-md group-hover:shadow-lg transition-shadow"
+                      />
+                      <button
+                        onClick={() => toggleIcon(icon)}
+                        className="absolute -top-2 -right-2 w-5 h-5 bg-red-500 text-white rounded-full flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-600"
+                      >
+                        ×
+                      </button>
+                    </div>
+                  ))
+                )}
+              </div>
+              <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-6 xl:grid-cols-8 gap-4">
+                {AVAILABLE_ICONS.map((icon: string) => {
+                  const isSelected = selectedIcons.includes(icon);
+                  return (
+                    <button
+                      key={icon}
+                      onClick={() => toggleIcon(icon)}
+                      className={`p-3 rounded-xl border-2 transition-all duration-300 transform hover:scale-105 ${
+                        isSelected
+                          ? 'border-green-400 bg-green-50 shadow-lg'
+                          : 'border-gray-200 hover:border-gray-300 hover:shadow-md'
+                      }`}
+                    >
+                      <img
+                        src={`https://skillicons.dev/icons?i=${icon}`}
+                        alt={icon}
+                        className={`w-full h-auto rounded-lg transition-opacity duration-200 ${
+                          isSelected ? 'opacity-70' : 'opacity-100 hover:opacity-80'
+                        }`}
+                      />
+                      <div className="mt-2 text-xs font-medium text-gray-600 hover:text-gray-800 transition-colors">
+                        {icon}
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </div>
 
