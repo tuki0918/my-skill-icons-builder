@@ -1,5 +1,3 @@
-// Search bar component for filtering skill icons
-
 import { Search } from "lucide-react";
 import type React from "react";
 

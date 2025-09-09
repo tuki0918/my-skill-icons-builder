@@ -1,5 +1,3 @@
-// Preview section component containing settings, preview display, and code output
-
 import type React from "react";
 import type { Alignment, Theme } from "../types";
 import CodeOutput from "./CodeOutput";

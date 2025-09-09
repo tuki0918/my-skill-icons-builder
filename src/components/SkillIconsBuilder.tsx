@@ -1,5 +1,3 @@
-// Refactored Skill Icons Builder using extracted components and hooks
-
 import type React from "react";
 import {
   useCopyToClipboard,

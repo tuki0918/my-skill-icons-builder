@@ -1,5 +1,3 @@
-// Header component for the Skill Icons Builder
-
 import type React from "react";
 
 const Header: React.FC = () => {

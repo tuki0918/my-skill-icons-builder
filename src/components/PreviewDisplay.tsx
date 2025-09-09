@@ -1,5 +1,3 @@
-// Preview display component for showing the skill icons preview
-
 import type React from "react";
 import type { Alignment, Theme } from "../types";
 import { generateSkillIconsUrl } from "../utils/codeGeneration";

@@ -1,5 +1,3 @@
-// Utility functions for generating skill icons URLs and code
-
 import type { Alignment, SkillIconsUrlParams, Theme } from "../types";
 
 /**

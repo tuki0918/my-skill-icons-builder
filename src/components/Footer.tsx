@@ -1,5 +1,3 @@
-// Footer component for the Skill Icons Builder
-
 import type React from "react";
 import githubIcon from "../assets/github.svg";
 

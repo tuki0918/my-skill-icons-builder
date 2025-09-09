@@ -1,5 +1,3 @@
-// Icon selection grid component containing selected icons list, search, and icon grid
-
 import type React from "react";
 import IconGrid from "./IconGrid";
 import SearchBar from "./SearchBar";

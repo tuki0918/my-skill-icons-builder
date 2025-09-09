@@ -1,5 +1,3 @@
-// Icon grid component for displaying available skill icons
-
 import type React from "react";
 
 interface IconGridProps {

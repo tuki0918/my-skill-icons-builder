@@ -1,5 +1,3 @@
-// Code output component for displaying and copying generated code
-
 import { Copy } from "lucide-react";
 import type React from "react";
 import type { Alignment, Theme } from "../types";

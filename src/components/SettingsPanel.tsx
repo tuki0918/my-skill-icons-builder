@@ -1,5 +1,3 @@
-// Settings panel component for configuring skill icons display
-
 import { AlignCenter, AlignLeft, Moon, Settings, Sun } from "lucide-react";
 import React from "react";
 import type { Alignment, Theme } from "../types";

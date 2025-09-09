@@ -1,5 +1,3 @@
-// Custom hooks for managing various state aspects of the Skill Icons Builder
-
 import React from "react";
 import { AVAILABLE_ICONS } from "../components/SkillIconsData";
 import type { Alignment, Theme } from "../types";

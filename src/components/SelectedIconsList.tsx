@@ -1,5 +1,3 @@
-// Selected icons list component with drag and drop functionality
-
 import type React from "react";
 
 interface SelectedIconsListProps {

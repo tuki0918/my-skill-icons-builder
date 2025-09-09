@@ -1,5 +1,3 @@
-// TypeScript types for the Skill Icons Builder application
-
 export type Theme = "dark" | "light";
 export type Alignment = "left" | "center";
 
