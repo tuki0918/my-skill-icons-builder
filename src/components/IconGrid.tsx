@@ -33,7 +33,7 @@ const IconGrid: React.FC<IconGridProps> = ({
                   isSelected ? "opacity-70" : "opacity-100 hover:opacity-80"
                 }`}
               />
-              <div className="mt-2 text-xs font-medium text-gray-600 hover:text-gray-800 transition-colors text-center truncate">
+              <div className="mt-2 text-xs font-medium text-gray-600 hover:text-gray-800 transition-colors text-center truncate hidden sm:block">
                 {icon}
               </div>
             </button>
