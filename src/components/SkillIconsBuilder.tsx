@@ -99,6 +99,33 @@ const SkillIconsBuilder: React.FC = () => {
                 <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
                 Preview ({selectedIcons.length} selected)
               </h2>
+              {/* Drag and Drop Icons */}
+              <div className="mb-6">
+                <div className="flex flex-wrap gap-2 p-4 bg-white rounded-xl border-2 border-dashed border-gray-200">
+                  {selectedIcons.map((icon, index) => (
+                    <div
+                      key={`${icon}-${index}`}
+                      className="group relative cursor-move transform transition-all duration-200 hover:scale-110"
+                      draggable
+                      onDragStart={(e) => handleDragStart(e, index)}
+                      onDragOver={handleDragOver}
+                      onDrop={(e) => handleDrop(e, index)}
+                    >
+                      <img
+                        src={`https://skillicons.dev/icons?i=${icon}`}
+                        alt={icon}
+                        className="w-12 h-12 rounded-lg shadow-md group-hover:shadow-lg transition-shadow"
+                      />
+                      <button
+                        onClick={() => toggleIcon(icon)}
+                        className="absolute -top-2 -right-2 w-5 h-5 bg-red-500 text-white rounded-full flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-600"
+                      >
+                        ×
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
               {/* Settings Panel */}
               <div className="mb-8 p-6 bg-gradient-to-r from-gray-50 to-blue-50 rounded-xl border border-gray-200">
                 <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
@@ -179,36 +206,6 @@ const SkillIconsBuilder: React.FC = () => {
                   />
                 </div>
               </div>
-              {/* Drag and Drop Icons */}
-              <div className="mb-6">
-                <h3 className="text-lg font-semibold text-gray-700 mb-4">
-                  🎯 Selected Icons (Drag to reorder)
-                </h3>
-                <div className="flex flex-wrap gap-2 p-4 bg-white rounded-xl border-2 border-dashed border-gray-200">
-                  {selectedIcons.map((icon, index) => (
-                    <div
-                      key={`${icon}-${index}`}
-                      className="group relative cursor-move transform transition-all duration-200 hover:scale-110"
-                      draggable
-                      onDragStart={(e) => handleDragStart(e, index)}
-                      onDragOver={handleDragOver}
-                      onDrop={(e) => handleDrop(e, index)}
-                    >
-                      <img
-                        src={`https://skillicons.dev/icons?i=${icon}`}
-                        alt={icon}
-                        className="w-12 h-12 rounded-lg shadow-md group-hover:shadow-lg transition-shadow"
-                      />
-                      <button
-                        onClick={() => toggleIcon(icon)}
-                        className="absolute -top-2 -right-2 w-5 h-5 bg-red-500 text-white rounded-full flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-600"
-                      >
-                        ×
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              </div>
               {/* Code Generation */}
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-3">
@@ -257,18 +254,6 @@ const SkillIconsBuilder: React.FC = () => {
                     }`}
                     rows={centerAlign ? 5 : 3}
                   />
-                </div>
-              </div>
-              {/* Settings Info */}
-              <div className="mt-6 p-4 bg-blue-50 rounded-xl border border-blue-200">
-                <h4 className="font-semibold text-blue-800 mb-2">Current Settings:</h4>
-                <div className="text-sm text-blue-700 space-y-1">
-                  <p>🎨 Theme: <span className="font-medium">{theme === 'dark' ? 'Dark Background' : 'Light Background'}</span></p>
-                  <p>📊 Icons per line: <span className="font-medium">{perLine}</span></p>
-                  <p>📍 Alignment: <span className="font-medium">{centerAlign ? 'Center Aligned' : 'Left Aligned'}</span></p>
-                  {centerAlign && (
-                    <p className="text-blue-600 font-medium">💡 Using HTML format for center alignment</p>
-                  )}
                 </div>
               </div>
             </div>
