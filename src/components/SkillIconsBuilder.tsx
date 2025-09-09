@@ -300,26 +300,31 @@ const SkillIconsBuilder: React.FC = () => {
                 {AVAILABLE_ICONS.map((icon: string) => {
                   const isSelected = selectedIcons.includes(icon);
                   return (
-                    <button
-                      key={icon}
-                      onClick={() => toggleIcon(icon)}
-                      className={`p-3 rounded-xl border-2 transition-all duration-300 transform hover:scale-105 ${
-                        isSelected
-                          ? 'border-green-400 bg-green-50 shadow-lg'
-                          : 'border-gray-200 hover:border-gray-300 hover:shadow-md'
-                      }`}
-                    >
-                      <img
-                        src={`https://skillicons.dev/icons?i=${icon}`}
-                        alt={icon}
-                        className={`w-full h-auto rounded-lg transition-opacity duration-200 ${
-                          isSelected ? 'opacity-70' : 'opacity-100 hover:opacity-80'
+                    <div key={icon} className="relative group">
+                      <button
+                        onClick={() => toggleIcon(icon)}
+                        className={`w-full p-3 rounded-xl border-2 transition-all duration-300 transform hover:scale-105 ${
+                          isSelected
+                            ? 'border-green-400 bg-green-50 shadow-lg'
+                            : 'border-gray-200 hover:border-gray-300 hover:shadow-md'
                         }`}
-                      />
-                      <div className="mt-2 text-xs font-medium text-gray-600 hover:text-gray-800 transition-colors text-center truncate">
+                      >
+                        <img
+                          src={`https://skillicons.dev/icons?i=${icon}`}
+                          alt={icon}
+                          className={`w-full h-auto rounded-lg transition-opacity duration-200 ${
+                            isSelected ? 'opacity-70' : 'opacity-100 hover:opacity-80'
+                          }`}
+                        />
+                        <div className="mt-2 text-xs font-medium text-gray-600 hover:text-gray-800 transition-colors text-center truncate">
+                          {icon}
+                        </div>
+                      </button>
+                      {/* Custom Tooltip */}
+                      <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-gray-800 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-10">
                         {icon}
                       </div>
-                    </button>
+                    </div>
                   );
                 })}
               </div>
