@@ -204,7 +204,6 @@ const SkillIconsBuilder: React.FC = () => {
                 <div className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl p-6 mb-6 border-2 border-dashed border-gray-200">
                   <div className="min-h-[60px] flex items-center justify-center text-gray-400 text-sm">
                     <div className="text-center">
-                      <div className="text-2xl mb-2">🎨</div>
                       <div>Your skill icons preview will appear here</div>
                     </div>
                   </div>
