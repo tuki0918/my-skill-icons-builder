@@ -87,7 +87,7 @@ const SkillIconsBuilder: React.FC = () => {
             Skill Icons Builder
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Create beautiful skill badges for your GitHub profile! Select your technologies and get ready-to-use Markdown and HTML code.
+            Select icons to showcase your skills. Easily paste them into your portfolio.
           </p>
         </div>
 
