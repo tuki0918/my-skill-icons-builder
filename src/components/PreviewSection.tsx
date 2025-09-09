@@ -29,8 +29,8 @@ const PreviewSection: React.FC<PreviewSectionProps> = ({
 }) => {
   return (
     <div className="lg:order-1 lg:col-span-2">
-      <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100 sticky top-6">
-        <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+      <div className="bg-white rounded-2xl shadow-xl p-4 md:p-8 border border-gray-100 sticky top-6">
+        <h2 className="text-xl md:text-2xl font-bold text-gray-800 mb-4 md:mb-6 flex items-center gap-2">
           <div
             className={`w-3 h-3 ${selectedIcons.length > 0 ? "bg-green-400 animate-pulse" : "bg-gray-300"} rounded-full`}
           ></div>
