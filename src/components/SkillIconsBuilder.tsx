@@ -1,5 +1,5 @@
 import React from 'react';
-import { Check, Copy } from 'lucide-react';
+import { Copy } from 'lucide-react';
 
 import { AVAILABLE_ICONS } from './SkillIconsData';
 
@@ -269,7 +269,7 @@ const SkillIconsBuilder: React.FC = () => {
                 <button
                   key={icon}
                   onClick={() => toggleIcon(icon)}
-                  className={`relative group p-3 rounded-xl border-2 transition-all duration-300 transform hover:scale-105 ${
+                  className={`p-3 rounded-xl border-2 transition-all duration-300 transform hover:scale-105 ${
                     isSelected
                       ? 'border-green-400 bg-green-50 shadow-lg'
                       : 'border-gray-200 hover:border-gray-300 hover:shadow-md'
@@ -279,17 +279,10 @@ const SkillIconsBuilder: React.FC = () => {
                     src={`https://skillicons.dev/icons?i=${icon}`}
                     alt={icon}
                     className={`w-full h-auto rounded-lg transition-opacity duration-200 ${
-                      isSelected ? 'opacity-70' : 'opacity-100 group-hover:opacity-80'
+                      isSelected ? 'opacity-70' : 'opacity-100 hover:opacity-80'
                     }`}
                   />
-                  {isSelected && (
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-lg animate-bounce">
-                        <Check size={16} className="text-white" />
-                      </div>
-                    </div>
-                  )}
-                  <div className="mt-2 text-xs font-medium text-gray-600 group-hover:text-gray-800 transition-colors">
+                  <div className="mt-2 text-xs font-medium text-gray-600 hover:text-gray-800 transition-colors">
                     {icon}
                   </div>
                 </button>
