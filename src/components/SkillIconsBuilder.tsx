@@ -1,5 +1,5 @@
 import React from 'react';
-import { Copy, AlignLeft, AlignCenter, Settings, Moon, Sun } from 'lucide-react';
+import { Copy, AlignLeft, AlignCenter, Settings, Moon, Sun, Search } from 'lucide-react';
 
 import { AVAILABLE_ICONS } from './SkillIconsData';
 import githubIcon from '../assets/github.svg';
@@ -12,7 +12,17 @@ const SkillIconsBuilder: React.FC = () => {
   const [theme, setTheme] = React.useState<'dark' | 'light'>('dark');
   const [perLine, setPerLine] = React.useState<number>(15);
   const [alignment, setAlignment] = React.useState<'left' | 'center'>('left');
+  const [searchTerm, setSearchTerm] = React.useState<string>('');
 
+  // Filter icons based on search term
+  const filteredIcons = React.useMemo(() => {
+    if (!searchTerm.trim()) {
+      return AVAILABLE_ICONS;
+    }
+    return AVAILABLE_ICONS.filter(icon => 
+      icon.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  }, [searchTerm]);
 
   const toggleIcon = (icon: string) => {
     setSelectedIcons(prev => 
@@ -297,8 +307,36 @@ const SkillIconsBuilder: React.FC = () => {
                   ))
                 )}
               </div>
+
+              {/* Search Form */}
+              <div className="mb-6">
+                <div className="relative">
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+                  <input
+                    type="text"
+                    placeholder="Search for skills (e.g., javascript, react, python...)"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-700 placeholder-gray-400"
+                  />
+                  {searchTerm && (
+                    <button
+                      onClick={() => setSearchTerm('')}
+                      className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+                    >
+                      ×
+                    </button>
+                  )}
+                </div>
+                {searchTerm && (
+                  <div className="mt-2 text-sm text-gray-500">
+                    Found {filteredIcons.length} icon{filteredIcons.length !== 1 ? 's' : ''} matching "{searchTerm}"
+                  </div>
+                )}
+              </div>
+
               <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-6 xl:grid-cols-8 gap-4">
-                {AVAILABLE_ICONS.map((icon: string) => {
+                {filteredIcons.map((icon: string) => {
                   const isSelected = selectedIcons.includes(icon);
                   return (
                     <div key={icon} className="relative group">
