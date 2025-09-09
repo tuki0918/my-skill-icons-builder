@@ -1,6 +1,6 @@
 import "./App.css";
 
-import SkillIconsBuilder from './components/SkillIconsBuilder';
+import SkillIconsBuilder from "./components/SkillIconsBuilder";
 
 const App = () => <SkillIconsBuilder />;
 
