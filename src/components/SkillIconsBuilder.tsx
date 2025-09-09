@@ -316,7 +316,7 @@ const SkillIconsBuilder: React.FC = () => {
                           isSelected ? 'opacity-70' : 'opacity-100 hover:opacity-80'
                         }`}
                       />
-                      <div className="mt-2 text-xs font-medium text-gray-600 hover:text-gray-800 transition-colors">
+                      <div className="mt-2 text-xs font-medium text-gray-600 hover:text-gray-800 transition-colors text-center truncate">
                         {icon}
                       </div>
                     </button>
