@@ -234,30 +234,38 @@ const SkillIconsBuilder: React.FC = () => {
         )}
         {/* Icon Selection Grid */}
         <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
-          <h2 className="text-2xl font-bold text-gray-800 mb-6">Available Skills</h2>
-            <div className="mb-6 flex flex-wrap gap-2 p-4 bg-gray-50 rounded-xl border-2 border-dashed border-gray-200">
-              {selectedIcons.map((icon, index) => (
-                <div
-                  key={`${icon}-${index}`}
-                  className="group relative cursor-move transform transition-all duration-200 hover:scale-110"
-                  draggable
-                  onDragStart={(e) => handleDragStart(e, index)}
-                  onDragOver={handleDragOver}
-                  onDrop={(e) => handleDrop(e, index)}
-                >
-                  <img
-                    src={`https://skillicons.dev/icons?i=${icon}`}
-                    alt={icon}
-                    className="w-12 h-12 rounded-lg shadow-md group-hover:shadow-lg transition-shadow"
-                  />
-                  <button
-                    onClick={() => toggleIcon(icon)}
-                    className="absolute -top-2 -right-2 w-5 h-5 bg-red-500 text-white rounded-full flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-600"
-                  >
-                    ×
-                  </button>
+          <h2 className="text-2xl font-bold text-gray-800 mb-6">My Skills</h2>
+            <div className="mb-6 p-4 bg-gray-50 rounded-xl border-2 border-dashed border-gray-200 min-h-[64px] flex flex-wrap gap-2 items-start">
+              {selectedIcons.length === 0 ? (
+                <div className="w-full flex items-center justify-center text-gray-400 text-sm py-4">
+                  <div className="text-center">
+                    <div>Select skill icons to get started</div>
+                  </div>
                 </div>
-              ))}
+              ) : (
+                selectedIcons.map((icon, index) => (
+                  <div
+                    key={`${icon}-${index}`}
+                    className="group relative cursor-move transform transition-all duration-200 hover:scale-110"
+                    draggable
+                    onDragStart={(e) => handleDragStart(e, index)}
+                    onDragOver={handleDragOver}
+                    onDrop={(e) => handleDrop(e, index)}
+                  >
+                    <img
+                      src={`https://skillicons.dev/icons?i=${icon}`}
+                      alt={icon}
+                      className="w-12 h-12 rounded-lg shadow-md group-hover:shadow-lg transition-shadow"
+                    />
+                    <button
+                      onClick={() => toggleIcon(icon)}
+                      className="absolute -top-2 -right-2 w-5 h-5 bg-red-500 text-white rounded-full flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-600"
+                    >
+                      ×
+                    </button>
+                  </div>
+                ))
+              )}
             </div>
           <div className="grid grid-cols-6 sm:grid-cols-8 md:grid-cols-10 lg:grid-cols-12 xl:grid-cols-16 gap-4">
             {AVAILABLE_ICONS.map((icon: string) => {
