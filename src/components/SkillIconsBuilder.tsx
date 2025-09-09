@@ -117,7 +117,7 @@ const SkillIconsBuilder: React.FC = () => {
                         onClick={() => setTheme('dark')}
                         className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                           theme === 'dark'
-                            ? 'bg-gray-800 text-white shadow-md'
+                            ? 'bg-blue-500 text-white shadow-md'
                             : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
                         }`}
                       >
@@ -128,7 +128,7 @@ const SkillIconsBuilder: React.FC = () => {
                         onClick={() => setTheme('light')}
                         className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                           theme === 'light'
-                            ? 'bg-yellow-400 text-gray-800 shadow-md'
+                            ? 'bg-blue-500 text-white shadow-md'
                             : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
                         }`}
                       >
