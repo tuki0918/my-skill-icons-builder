@@ -43,7 +43,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
                 className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                   theme === "dark"
                     ? "bg-blue-500 text-white shadow-md"
-                    : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                    : "bg-gray-200 text-gray-700 hover:bg-gray-300 cursor-pointer"
                 }`}
               >
                 <Moon size={16} />
@@ -55,7 +55,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
                 className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                   theme === "light"
                     ? "bg-blue-500 text-white shadow-md"
-                    : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                    : "bg-gray-200 text-gray-700 hover:bg-gray-300 cursor-pointer"
                 }`}
               >
                 <Sun size={16} />
@@ -80,7 +80,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
                 max="20"
                 value={perLine}
                 onChange={(e) => setPerLine(Number(e.target.value))}
-                className="flex-1 accent-blue-500"
+                className="flex-1 accent-blue-500 cursor-pointer"
               />
               <span className="w-8 text-sm font-medium text-gray-600">
                 {perLine}
@@ -100,7 +100,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
                 className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                   alignment === "left"
                     ? "bg-blue-500 text-white shadow-md"
-                    : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                    : "bg-gray-200 text-gray-700 hover:bg-gray-300 cursor-pointer"
                 }`}
               >
                 <AlignLeft size={16} />
@@ -112,7 +112,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
                 className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                   alignment === "center"
                     ? "bg-blue-500 text-white shadow-md"
-                    : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                    : "bg-gray-200 text-gray-700 hover:bg-gray-300 cursor-pointer"
                 }`}
               >
                 <AlignCenter size={16} />

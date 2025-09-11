@@ -20,7 +20,7 @@ const IconGrid: React.FC<IconGridProps> = ({
             <button
               type="button"
               onClick={() => toggleIcon(icon)}
-              className={`w-full p-3 rounded-xl border-2 transition-all duration-300 transform hover:scale-105 ${
+              className={`w-full p-3 rounded-xl border-2 transition-all duration-300 transform hover:scale-105 cursor-pointer ${
                 isSelected
                   ? "border-green-400 bg-green-50 shadow-lg"
                   : "border-gray-200 hover:border-gray-300 hover:shadow-md"

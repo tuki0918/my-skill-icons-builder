@@ -44,7 +44,7 @@ const CodeOutput: React.FC<CodeOutputProps> = ({
             <button
               type="button"
               onClick={() => copyToClipboard(markdownCode, "markdown")}
-              className="flex items-center gap-2 px-3 py-1.5 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors text-sm"
+              className="flex items-center gap-2 px-3 py-1.5 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors text-sm cursor-pointer"
             >
               <Copy size={14} />
               {copiedText === "markdown" ? "Copied!" : "Copy"}
@@ -64,7 +64,7 @@ const CodeOutput: React.FC<CodeOutputProps> = ({
           <button
             type="button"
             onClick={() => copyToClipboard(htmlCode, "html")}
-            className="flex items-center gap-2 px-3 py-1.5 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors text-sm"
+            className="flex items-center gap-2 px-3 py-1.5 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors text-sm cursor-pointer"
           >
             <Copy size={14} />
             {copiedText === "html" ? "Copied!" : "Copy"}
