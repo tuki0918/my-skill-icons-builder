@@ -53,6 +53,9 @@ const SelectedIconsList: React.FC<SelectedIconsListProps> = ({
             alt={icon}
             className="w-12 h-12 rounded-lg shadow-md group-hover:shadow-lg transition-shadow"
           />
+          <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-gray-800 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-10">
+            {icon}
+          </div>
           <button
             type="button"
             onClick={() => toggleIcon(icon)}
